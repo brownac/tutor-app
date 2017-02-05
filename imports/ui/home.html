@@ -1,0 +1,14 @@
+<template name="homepage">
+	<div class="ui one column center aligned grid">
+		<div class="column six wide form-holder" id="query">
+			<h1>What do you need help with?</h1>
+			<div class="ui transparent left icon input" id="search-form">
+				<input type="text" placeholder="Help me with..." id="search-box">
+				<i class="search icon"></i>
+			</div>
+			{{#each classes}}
+				<h3><a href="/reserve/{{name}}">{{name}}</a></h3>
+			{{/each}}
+		</div>
+	</div>
+</template>
