@@ -22,20 +22,24 @@
 	<form class="ui form hide" id="reserve-form">
 		<div class="field">
 			<label>First Name <span id="required">*</span></label>
-			<input type="text" name="first-name" placeholder="First Name">
+			<input type="text" name="firstName" placeholder="First Name">
 		</div>
 		<div class="field">
 			<label>Last Name <span id="required">*</span></label>
-			<input type="text" name="last-name" placeholder="Last Name">
+			<input type="text" name="lastName" placeholder="Last Name">
+		</div>
+		<div class="field">
+			<label>E-mail address <span id="required">*</span></label>
+			<input type="text" name="email" placeholder="abc@email.com">
 		</div>
 		<div class="field">
 			<label>Subject <span id="required">*</span></label>
-			<input type="text" name="last-name" placeholder="Subject" value="{{name}}">
+			<input type="text" name="subject" placeholder="Subject" value="{{name}}">
 		</div>
 		<div class="field">
 			<label>Grade level <span class="required"></span></label>
 			<div class="ui selection dropdown">
-				<input type="hidden" name="grade-level" id="grade-level">
+				<input type="hidden" name="gradeLevel" id="grade-level">
 				<i class="dropdown icon"></i>
 				<div class="default text">Grade level</div>
 				<div class="menu">
@@ -47,11 +51,11 @@
 		</div>
 		<div class="field code hide">
 			<label>Tell me the course code. <span class="required">*</span></label>
-			<input type="text" name="course-code" placeholder="ABC1234">
+			<input type="text" name="courseCode" placeholder="ABC1234">
 		</div>
 		<div class="field">
 			<label>Tell me what you need help with. <span id="required">*</span></label>
-			<textarea rows="2"></textarea>
+			<textarea rows="2" name="description"></textarea>
 		</div>
 		<div class="field">
 			<div class="ui checkbox">

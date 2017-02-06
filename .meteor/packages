@@ -24,3 +24,5 @@ iron:router
 autopublish
 session
 mrt:jquery-easing
+agoldman:sparkpost-mail
+email
