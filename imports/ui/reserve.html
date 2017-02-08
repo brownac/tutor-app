@@ -1,5 +1,10 @@
 <template name="ReservePage">
 <div class="ui container">
+	<div class="ui one column left aligned grid" id="back-button">
+		<div class="ui button" tabindex="0">
+			Back
+		</div>
+	</div>
 	<div class="ui grid">
 		<div class="column eight wide" id="reservation-content">
 			<h1>You want to reserve {{name}}? Cool!</h1>
@@ -19,7 +24,7 @@
 </template>
 
 <template name="ReserveForm">
-	<form class="ui form hide" id="reserve-form">
+<form class="ui form hide">
 		<div class="field">
 			<label>First Name <span id="required">*</span></label>
 			<input type="text" name="firstName" placeholder="First Name">
@@ -59,10 +64,11 @@
 		</div>
 		<div class="field">
 			<div class="ui checkbox">
-				<input type="checkbox" tabindex="0">
+				<input type="checkbox" tabindex="0" name="agree">
 				<label>I agree to be contacted by email. <span id="required">*</span></label>
 			</div>
 		</div>
-		<button class="ui button" type="submit" id="submit-request">Submit</button>
+		<button class="ui submit button" type="submit" id="submit-request">Submit</button>
+		<div class="ui error message"></div>
 	</form>
 </template>

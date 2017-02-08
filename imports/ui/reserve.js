@@ -1,10 +1,13 @@
+/**
+** TODO:
+** implement form validation (somehow)
+**/
+
 import { Template } from 'meteor/templating'
- 
-import Classes from '../api/classes'
+
+import {Classes} from '../api/classes'
 
 import Reservations from '../api/reservations'
-
-import { Email } from 'meteor/email'
 
 import './reserve.html';
 
@@ -18,10 +21,10 @@ Template.ReservePage.events({
 	/** click the go button
 		these are some events that happen when the go button and subsequent form are clicked around on
 	**/
-	'click .ui.animated.button': (event) => {
+	'click .ui.animated.button'(event) {
 		$('.ui.form').slideDown({
 			duration: 1000,
-			easing: "easeInExpo"		
+			easing: "easeInExpo"
 		});
 		$('.dropdown').dropdown();
 		$('#grade-level').on('change',function(){
@@ -32,9 +35,14 @@ Template.ReservePage.events({
 		});
 	},
 
-	'submit #reserve-form': (event) => {
+	// click the back button
+	'click #back-button'(event) {
+		Router.go('/');
+	},
+
+	'submit .ui.form'(event) {
 		event.preventDefault();
-		// submit form 
+		// submit form
 		const firstName = event.target.firstName.value;
 		const lastName = event.target.lastName.value;
 		const email = event.target.email.value;
@@ -42,7 +50,6 @@ Template.ReservePage.events({
 		const gradeLevel = event.target.gradeLevel.value;
 		const courseCode = event.target.courseCode.value;
 		const description = event.target.description.value;
-		console.log(gradeLevel);
 
 		Reservations.insert({
 			firstName : firstName,
@@ -51,12 +58,15 @@ Template.ReservePage.events({
 			subject : subject,
 			gradeLevel : gradeLevel,
 			courseCode : courseCode,
-			description : description
+			description : description,
+			status : "Pending"
 		});
 		Meteor.call('sendEmail',
 					email,
 					'tutoring@austincbrown.com',
 					'Tutoring with Austin!',
 					'Hey ' + firstName + '! This an email confirming that you contacted me for help with ' + subject + '. I will reach out to you in the next few days to talk about when would work best for you. Thanks! -Austin');
+		toastr.success('Thanks for contacting me! I will be in touch soon.', 'Form submitted!');
+		Router.go('/');
 	}
 });

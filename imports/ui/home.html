@@ -1,13 +1,17 @@
 <template name="homepage">
 	<div class="ui one column center aligned grid">
-		<div class="column six wide form-holder" id="query">
+		<div class="column ten wide form-holder" id="query">
+			{{> loginButtons}}
+			{{#if currentUser}}
+				<a href="/sessions/{{currentUser._id}}" id="reservations">{{currentUser.emails.[0].address}}'s reservations</a>
+			{{/if}}
 			<h1>What do you need help with?</h1>
 			<div class="ui transparent left icon input" id="search-form">
 				<input type="text" placeholder="Help me with..." id="search-box">
 				<i class="search icon"></i>
 			</div>
 			{{#each classes}}
-				<h3><a href="/reserve/{{name}}">{{name}}</a></h3>
+				<h3><a href="/reserve/{{route}}">{{name}}</a></h3>
 			{{/each}}
 		</div>
 	</div>

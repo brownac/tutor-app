@@ -1,0 +1,34 @@
+<template name="UserHome">
+{{#if currentUser}}
+	<div class="ui container" id="user-container">
+		<h1>Hello, you are logged in as {{currentUser.emails.[0].address}}<span><button class="ui red button" id="logout">Logout</button></span></h1>
+		<h3>You have the following reservations:</h3>
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th>Course</th>
+                <th>Grade Level</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Cancel</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{#each reservations}}
+                    <tr>
+                        <td>{{firstName}} <span> </span> {{lastName}}</td>
+                        <td>{{email}}</td>
+                        <td>{{subject}}</td>
+                        <td>{{gradeLevel}}</td>
+                        <td>{{status}}</td>
+                        <td>{{description}}</td>
+                        <td><button class="ui red button" id="cancel">Cancel</button></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+	</div>
+{{/if}}
+</template>
