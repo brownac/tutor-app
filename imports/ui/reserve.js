@@ -11,6 +11,9 @@ import Reservations from '../api/reservations'
 
 import './reserve.html';
 
+Meteor.subscribe("reservations")
+Meteor.subscribe("classes");
+
 Template.ReservePage.helpers({
 	reservations() {
 		return Reservations.find({});
@@ -51,16 +54,17 @@ Template.ReservePage.events({
 		const courseCode = event.target.courseCode.value;
 		const description = event.target.description.value;
 
-		Reservations.insert({
-			firstName : firstName,
-			lastName : lastName,
-			email : email,
-			subject : subject,
-			gradeLevel : gradeLevel,
-			courseCode : courseCode,
-			description : description,
-			scheduled : false
-		});
+		Meteor.call(
+			"createReservation",
+			firstName,
+			lastName,
+			email,
+			subject,
+			gradeLevel,
+			courseCode,
+			description
+		);
+
 		Meteor.call('sendEmail',
 					email,
 					'tutoring@austincbrown.com',

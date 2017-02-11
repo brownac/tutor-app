@@ -8,6 +8,9 @@ import {Meteor} from 'meteor/meteor'
 
 import './userHome.html'
 
+Meteor.subscribe("reservations");
+Meteor.subscribe("classes");
+
 Template.UserHome.helpers({
 	reservations() {
 		var email = Meteor.user().emails[0].address;
@@ -22,8 +25,7 @@ Template.UserHome.events({
 			Router.go('/');
 		});
 	},
-	'click #cancel'(event) {
-		event.preventDefault();
-		Reservations.remove(this._id);
+	'click #cancel'() {
+	    Meteor.call("deleteReservation", this._id);
 	}
 });

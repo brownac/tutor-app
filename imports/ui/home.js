@@ -1,11 +1,14 @@
 import { Template } from 'meteor/templating';
- 
-import { Classes } from '../api/classes';
- 
+
+import Classes from '../api/classes';
+
 import './home.html';
- 
+
+Meteor.subscribe("reservations");
+Meteor.subscribe("classes");
+
 Template.homepage.helpers({
-  classes: function () {
+  classes () {
     var regexp = new RegExp(Session.get('search/keyword'), 'i');
     $('#class').removeClass('hide');
     return Classes.find({name: regexp});
