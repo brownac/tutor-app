@@ -4,6 +4,7 @@
 			{{> loginButtons}}
 			{{#if currentUser}}
 				<a href="/sessions/{{currentUser._id}}" id="reservations">{{currentUser.emails.[0].address}}'s reservations</a>
+				<a href="/admin" id="admin-link">Admin</a>
 			{{/if}}
 			<h1>What do you need help with?</h1>
 			<div class="ui transparent left icon input" id="search-form">

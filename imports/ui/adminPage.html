@@ -1,0 +1,32 @@
+<template name="AdminPage">
+  <div class="ui container" id="admin">
+    <h1>Admin</h1>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>E-Mail</th>
+          <th>Course</th>
+          <th>Grade Level</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each reservations}}
+        <tr>
+          <td>{{firstName}} <span> </span> {{lastName}}</td>
+          <td>{{email}}</td>
+          <td>{{subject}}</td>
+          <td>{{gradeLevel}}</td>
+          <td>{{description}}</td>
+          <td><button class="{{#if scheduled}}ui green button{{else}}ui red button{{/if}}" id="toggle-clicked">{{#if scheduled}}Scheduled{{else}}Pending{{/if}}</button></td>
+          <td><button class="ui red button delete">Delete</button></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</template>

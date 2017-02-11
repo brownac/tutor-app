@@ -59,7 +59,7 @@ Template.ReservePage.events({
 			gradeLevel : gradeLevel,
 			courseCode : courseCode,
 			description : description,
-			status : "Pending"
+			scheduled : false
 		});
 		Meteor.call('sendEmail',
 					email,

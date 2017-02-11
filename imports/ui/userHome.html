@@ -22,7 +22,7 @@
                         <td>{{email}}</td>
                         <td>{{subject}}</td>
                         <td>{{gradeLevel}}</td>
-                        <td>{{status}}</td>
+                        <td>{{#if scheduled}}Scheduled{{else}}Pending{{/if}}</td>
                         <td>{{description}}</td>
                         <td><button class="ui red button" id="cancel">Cancel</button></td>
                     </tr>
